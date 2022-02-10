@@ -1,6 +1,6 @@
 package org.launchcode.quiz;
 
-import org.launchcode.quiz.assignment.Quiz;
+import org.launchcode.quiz.assignment.AlgebraProblemSet;
 import org.launchcode.quiz.question.CheckboxQuestion;
 import org.launchcode.quiz.question.MultipleChoiceQuestion;
 import org.launchcode.quiz.question.ShortAnswerQuestion;
@@ -15,20 +15,21 @@ public class Main {
 
         Student student = new Student("Jane");
 
-        Quiz quiz = new Quiz();
-        student.addAssignment(quiz);
+        AlgebraProblemSet algebraQuiz = new AlgebraProblemSet();
+        student.addAssignment(algebraQuiz);
 
-        quiz.addQuestion(new ShortAnswerQuestion("What is your favorite color?", "green"));
-        quiz.addQuestion(new TrueFalseQuestion("Cheese is delicious", true));
+        algebraQuiz.addQuestion(new ShortAnswerQuestion("Simplify the expression   -(5x - 7) +2 ", "\n" +
+                "−5x+9"));
+        algebraQuiz.addQuestion(new TrueFalseQuestion("x-3 and -3x are unlike terms.", true));
 
-        String[] mcChoices = {"Charlotte", "Asheville", "Raleigh", "Greensboro"};
-        quiz.addQuestion(new MultipleChoiceQuestion("What is the capital of North Carolina?", mcChoices, 2));
+        String[] mcChoices = {"0", "2", "3", "5"};
+        algebraQuiz.addQuestion(new MultipleChoiceQuestion("What is the coefficient of x in 2x+3?", mcChoices, 1));
 
         String[] cbChoices = {"6", "42", "7", "2"};
         int[] cbAnswers = {2, 3};
-        quiz.addQuestion(new CheckboxQuestion("Which of the following are prime numbers?", cbChoices, cbAnswers));
+        algebraQuiz.addQuestion(new CheckboxQuestion("Which of the following are prime numbers?", cbChoices, cbAnswers));
 
-        quiz.runQuiz();
+        algebraQuiz.runAlgebraProblemSet();
 
         double studentGrade = student.calculateGrade();
 
